@@ -46,7 +46,7 @@ Configuration
 - `map_width` - map width in px, eg: '400'
 - `map_height` - map height
 - `map_label` - label for map field. Defaults to "Map"
-
+- `default_zoom_level` - initial map zoom level. Defaults to 8
 
 Example:
 
@@ -55,10 +55,11 @@ RailsAdmin.config do |config|
   config.model Point do
     edit do
       field :location, :geospatial do
-        longitude_field :lon
+        address_field :address
         google_api_key "a1b2c3d4e5f6deadbeef"
         default_latitude -34.0  # Sydney, Australia
         default_longitude 151.0
+        default_zoom_level 15
       end
     end
   end
