@@ -1,7 +1,7 @@
-Rails Admin Mongoid Geolocation Field:
+Rails Admin Mongoid Geospatial Field:
 =====
 
-
+Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for setting geospatial information with Google Maps.
 
 Usage
 =====
