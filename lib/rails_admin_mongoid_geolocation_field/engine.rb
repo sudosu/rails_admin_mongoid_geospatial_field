@@ -1,7 +1,7 @@
 require 'rails'
-require 'rails_admin_mongoid_geolocation_field'
+require 'rails_admin_mongoid_geospatial_field'
 
-module RailsAdminMongoidGeolocationField
+module RailsAdminMongoidGeospatialField
   class Engine < Rails::Engine
   end
 end
