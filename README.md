@@ -57,8 +57,8 @@ RailsAdmin.config do |config|
       field :location, :geospatial do
         address_field :address
         google_api_key "a1b2c3d4e5f6deadbeef"
-        default_latitude -34.0  # Sydney, Australia
-        default_longitude 151.0
+        default_latitude 50.4  # Kiev, Ukraine
+        default_longitude 30.5
         default_zoom_level 15
       end
     end
