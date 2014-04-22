@@ -1,6 +1,6 @@
 module RailsAdmin::Config::Fields::Types
   class Map < RailsAdmin::Config::Fields::Base
-    RailsAdmin::Config::Fields::Types::register(:geolocation, self)
+    RailsAdmin::Config::Fields::Types::register(:geospatial, self)
 
     # THe name of the corresponding longitude field to match the latitude field
     # in this object.
@@ -63,7 +63,7 @@ module RailsAdmin::Config::Fields::Types
     end
 
     def dom_name
-      @dom_name ||= "#{form_tag_id(bindings[:form].object_name, @name)}_#{longitude_field}"
+      @dom_name ||= "#{form_tag_id(bindings[:form].object_name, @name)}"
     end
 
     def latitude_dom_name
