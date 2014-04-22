@@ -6,13 +6,13 @@ Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for setting 
 Usage
 =====
 
-rails_admin_map_field expects that the model will have two attributes, one for latitude and one for longitude of the point represented. To enable rails_admin_map_field, add the following to your `Gemfile`:
+To enable rails_admin_mongoid_geospatial_field, add the following to your `Gemfile`:
 
 ```ruby
-gem "rails_admin_map_field", :github => "sudosu/rails_admin_map_field"
+gem "rails_admin_mongoid_geospatial_field", :github => "sudosu/rails_admin_mongoid_geospatial_field"
 ```
 
-In your model:
+In your model location field must be an Array:
 
 ```ruby
 class Person
@@ -26,39 +26,35 @@ Then, add in your `config/initializers/rails_admin.rb` initializer:
 
 ```ruby
 RailsAdmin.config do |config|
-  config.model User do
+  config.model Person do
     edit do
-      field :latitude, :map
+      field :location, :geospatial
     end
   end
 end
 ```
 
-**Note**: The field which is set as a map-type field must be the latitude field, not the longitude. By default, rails_admin_map_field will guess that the longitude field is called "longitude".
-
 Configuration
 =============
-
-For different configurations, rails_admin_map_field can be configured with the following:
 
 - `address_field` - the name of the address field. Defaults to "address"
 - `city_field` - the name of the city field. Defaults to "city"
 - `state_field` - the name of the state field. Defaults to "state"
 - `google_api_key` - if you use a Google Maps API Key, it can be specified here.
 - `default_latitude` - the latitude to center the map shown on if the latitude field is blank. Defaults to 40.711417, the latitude of New Jersey City, NJ, USA
-- `default_longitude` - the longitude used if the longitude field is blank. Defaults to 74.0647, the longitude of New Jersey City, NJ, USA.
+- `default_longitude` - the longitude used if the longitude field is blank. Defaults to -74.0647, the longitude of New Jersey City, NJ, USA.
 - `map_width` - map width in px, eg: '400'
 - `map_height` - map height
 - `map_label` - label for map field. Defaults to "Map"
 
 
-A more complicated configuration example:
+Example:
 
 ```ruby
 RailsAdmin.config do |config|
   config.model Point do
     edit do
-      field :lat, :map do
+      field :location, :geospatial do
         longitude_field :lon
         google_api_key "a1b2c3d4e5f6deadbeef"
         default_latitude -34.0  # Sydney, Australia
@@ -71,10 +67,9 @@ end
 
 LICENSE
 =======
-rails_admin_map_field is licensed under the MIT license.
+rails_admin_mongoid_geospatial_field is licensed under the MIT license.
 
-Copyright (C) 2011 by Jason Langenauer, Jules Laplace, Valentin
-Ballestrino, Bartlomiej Skwira, Oleg Popadyuk
+Copyright (C) 2014 Oleg Popadyuk
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
