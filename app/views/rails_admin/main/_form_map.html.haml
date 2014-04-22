@@ -1,0 +1,90 @@
+:javascript
+  function initMapField() {
+    jQuery(function(){
+      var latitude = #{field.value.try(:first) || field.default_latitude};
+      var longitude = #{field.value.try(:last) || field.default_longitude};
+      var latlng = new google.maps.LatLng(latitude, longitude);
+      var geocoder = new google.maps.Geocoder();
+
+      var myOptions = {
+        zoom: #{field.default_zoom_level},
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false
+      };
+
+      var map = new google.maps.Map(document.getElementById("#{field.dom_name}"), myOptions);
+
+      // Only one marker can be created
+      var marker = new google.maps.Marker({
+        draggable:true,
+        position: new google.maps.LatLng(latitude, longitude),
+        map: map
+      });
+
+      google.maps.event.addListener(map, 'click', function(e) {
+        updateLocation(e.latLng);
+      });
+
+      google.maps.event.addListener(marker,'dragend',function(e) {
+        updateLocation(e.latLng);
+      });
+
+      jQuery("##{field.address_dom_name},##{field.city_dom_name},##{field.state_dom_name}").on("keyup", function(){
+        clearTimeout($.data(this, 'timer'));
+        $(this).data('timer', setTimeout(processAddress, 1000));
+      });
+
+      function processAddress() {
+        // geocode based on this location
+        var address = $("##{field.address_dom_name}").val(),
+        city = $("##{field.city_dom_name}").val() || false,
+        state = $("##{field.state_dom_name}").val() || false,
+        address_string = "",
+        changed = false;
+
+        if (address.length === 0)
+          return;
+
+        address_string = address;
+        if (city) address_string += ", " + city;
+        if (state) address_string += ", " + state;
+
+        if ((address === undefined) || (address.length === 0))
+          return;
+
+        geocoder.geocode({ 'address': address_string }, function(results, status){
+          if (! results || results.length === 0 || status !== "OK") return;
+
+          var location = results[0].geometry.location;
+          updateLocation(location);
+        });
+      };
+
+      function updateLocation(location) {
+        marker.setPosition(location);
+        map.setCenter(location);
+
+        jQuery("##{field.latitude_dom_name}").val(location.lat());
+        jQuery("##{field.longitude_dom_name}").val(location.lng());
+      }
+
+    });
+  }
+
+= javascript_include_tag ("http://maps.googleapis.com/maps/api/js?key=#{field.google_api_key}&sensor=false&callback=initMapField")
+
+%style
+  = "##{field.dom_name} label {width: auto;display: inline;}"
+  = "##{field.dom_name} img {max-width: none;}"
+
+%div.ramf-map-container{:id => field.dom_name, :style => "width:#{field.map_width}px; height:#{field.map_height}px"}
+= form.fields_for field.name do |location_field|
+  %div.control-group
+    = location_field.label :latitude, :class => "control-label"
+    %div.controls
+      = location_field.send :text_field, nil, field.html_attributes.reverse_merge({ :value => field.value.try(:first) || field.default_latitude, :id => field.latitude_dom_name })
+  %div.control-group
+    = location_field.label :longitude, :class => "control-label"
+    %div.controls
+      = location_field.send :text_field, nil, field.html_attributes.reverse_merge({ :value => field.value.try(:last) || field.default_longitude, :id => field.longitude_dom_name })
