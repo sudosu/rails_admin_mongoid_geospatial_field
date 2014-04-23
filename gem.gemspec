@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["Oleg Popadiuk"]
   s.email             = ["superdodman@gmail.com"]
-  s.homepage          = "http://github.com/jasonl/"
+  s.homepage          = "http://github.com/sudosu/"
   s.summary           = "Adds a map field using the Google Maps API to rails_admin"
   s.description       = "A plugin for RailsAdmin to provide a Google Maps input for Mongoid geospatial fields (GEO2D)"
   s.rubyforge_project = s.name
