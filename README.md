@@ -1,12 +1,10 @@
-Rails Admin Mongoid Geospatial Field:
-=====
+# Rails Admin Mongoid Geospatial Field:
 
 Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for setting geospatial information with Google Maps.
 
-Installation
-=====
+## Installation
 
-To enable rails_admin_mongoid_geospatial_field, add the following to your `Gemfile`:
+To enable this gem, add the following to your `Gemfile`:
 
 ```ruby
 gem "rails_admin_mongoid_geospatial_field", :github => "sudosu/rails_admin_mongoid_geospatial_field"
@@ -16,8 +14,7 @@ And then execute:
 
     $ bundle
 
-Usage
-=====
+## Usage
 
 In your model location field must be an Array:
 
@@ -41,8 +38,7 @@ RailsAdmin.config do |config|
 end
 ```
 
-Configuration
-=============
+## Configuration
 
 - `address_field` - the name of the address field. Defaults to "address"
 - `city_field` - the name of the city field. Defaults to "city"
@@ -50,10 +46,9 @@ Configuration
 - `google_api_key` - if you use a Google Maps API Key, it can be specified here.
 - `default_latitude` - the latitude to center the map shown on if the latitude field is blank. Defaults to 40.711417, the latitude of New Jersey City, NJ, USA
 - `default_longitude` - the longitude used if the longitude field is blank. Defaults to -74.0647, the longitude of New Jersey City, NJ, USA.
+- `default_zoom_level` - initial map zoom level. Defaults to 8
 - `map_width` - map width in px, eg: '400'
 - `map_height` - map height
-- `map_label` - label for map field. Defaults to "Map"
-- `default_zoom_level` - initial map zoom level. Defaults to 8
 
 Example:
 
@@ -73,9 +68,9 @@ RailsAdmin.config do |config|
 end
 ```
 
-LICENSE
-=======
-rails_admin_mongoid_geospatial_field is licensed under the MIT license.
+## License
+
+Licensed under the MIT license.
 
 Copyright (C) 2014 Oleg Popadyuk
 
