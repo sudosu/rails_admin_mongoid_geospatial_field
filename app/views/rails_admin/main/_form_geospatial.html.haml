@@ -38,9 +38,9 @@
       function processAddress() {
         // geocode based on this location
         var address = $("##{field.address_dom_name}").val(),
-        city = $("##{field.city_dom_name}").val() || false,
-        state = $("##{field.state_dom_name}").val() || false,
-        address_string = "",
+            city = $("##{field.city_dom_name}").val() || false,
+            state = $("##{field.state_dom_name}").val() || false,
+            address_string = "";
 
         if (address.length === 0)
           return;
