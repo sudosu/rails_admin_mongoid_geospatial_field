@@ -3,7 +3,7 @@ Rails Admin Mongoid Geospatial Field:
 
 Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for setting geospatial information with Google Maps.
 
-Usage
+Installation
 =====
 
 To enable rails_admin_mongoid_geospatial_field, add the following to your `Gemfile`:
@@ -11,6 +11,13 @@ To enable rails_admin_mongoid_geospatial_field, add the following to your `Gemfi
 ```ruby
 gem "rails_admin_mongoid_geospatial_field", :github => "sudosu/rails_admin_mongoid_geospatial_field"
 ```
+
+And then execute:
+
+    $ bundle
+
+Usage
+=====
 
 In your model location field must be an Array:
 
