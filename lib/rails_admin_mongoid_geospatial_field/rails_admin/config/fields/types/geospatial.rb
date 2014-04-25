@@ -1,5 +1,5 @@
 module RailsAdmin::Config::Fields::Types
-  class Map < RailsAdmin::Config::Fields::Base
+  class Geospatial < RailsAdmin::Config::Fields::Base
     RailsAdmin::Config::Fields::Types::register(:geospatial, self)
 
     # THe name of the corresponding longitude field to match the latitude field
