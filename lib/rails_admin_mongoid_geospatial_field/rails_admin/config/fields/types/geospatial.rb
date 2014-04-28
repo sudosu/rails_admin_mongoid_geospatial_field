@@ -12,6 +12,10 @@ module RailsAdmin::Config::Fields::Types
       "address"
     end
 
+    register_instance_option(:country_field) do
+      "country"
+    end
+
     register_instance_option(:city_field) do
       "city"
     end
@@ -76,6 +80,10 @@ module RailsAdmin::Config::Fields::Types
 
     def address_dom_name
       form_tag_id(bindings[:form].object_name, address_field)
+    end
+
+    def country_dom_name
+      form_tag_id(bindings[:form].object_name, country_field)
     end
 
     def city_dom_name
