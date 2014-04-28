@@ -2,12 +2,6 @@ module RailsAdmin::Config::Fields::Types
   class Geospatial < RailsAdmin::Config::Fields::Base
     RailsAdmin::Config::Fields::Types::register(:geospatial, self)
 
-    # THe name of the corresponding longitude field to match the latitude field
-    # in this object.
-    register_instance_option(:longitude_field) do
-      "longitude"
-    end
-
     register_instance_option(:address_field) do
       "address"
     end
@@ -33,14 +27,14 @@ module RailsAdmin::Config::Fields::Types
       nil
     end
 
-    # Latitude value to display in the map if the latitude attribute is nil
+    # Initial latitude value
     register_instance_option(:default_latitude) do
-      40.711417 # Latitude of Jersey City, NJ
+      48.9226 # Latitude of Ivano-Frankivs'k, Ukraine
     end
 
-    # Longitude value to display if the longitude attribute is nil
+    # Initial longitude value
     register_instance_option(:default_longitude) do
-      -74.0647 # Longitude of Jersey City, NJ
+      24.7111 # Longitude of Ivano-Frankivs'k, Ukraine
     end
 
     # Default zoom level of the map
