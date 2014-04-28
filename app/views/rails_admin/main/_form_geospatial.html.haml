@@ -61,8 +61,6 @@
         if ((address === undefined) || (address.length === 0))
           return;
 
-          console.log(address_string)
-
         geocoder.geocode({ 'address': address_string }, function(results, status){
           if (! results || results.length === 0 || status !== "OK") return;
 
