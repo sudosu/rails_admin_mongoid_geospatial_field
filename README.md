@@ -41,8 +41,8 @@ end
 ## Configuration
 
 - `google_api_key` - if you use a Google Maps API Key, it can be specified here.
-- `default_latitude` - the latitude to center the map shown on if the latitude is blank. Defaults to 48.9226, the latitude of Ivano-Frankivs'k City, Ukraine
-- `default_longitude` - the longitude used if the longitude is blank. Defaults to 24.7111, the longitude of Ivano-Frankivs'k City, Ukraine.
+- `default_latitude` - the latitude to center the map shown on if the latitude is blank. Defaults to 48.9226, the latitude of Ivano-Frankivsk, Ukraine
+- `default_longitude` - the longitude used if the longitude is blank. Defaults to 24.7111, the longitude of Ivano-Frankivsk, Ukraine.
 - `default_zoom_level` - initial map zoom level. Defaults to 8
 - `map_width` - map width in px, eg: '400'
 - `map_height` - map height in px
@@ -52,6 +52,7 @@ If your model have an additional address fields (city, country, state), you can 
 - `city_field` - the name of the city field. Defaults to :city
 - `state_field` - the name of the state field. Defaults to :state
 - `country_field` - the name of the country field. Defaults to :country
+
 This works perfectly even with associations.
 
 Example:
