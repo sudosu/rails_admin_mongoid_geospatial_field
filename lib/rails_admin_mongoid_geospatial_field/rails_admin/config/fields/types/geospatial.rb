@@ -69,7 +69,7 @@ module RailsAdmin::Config::Fields::Types
     end
 
     def longitude_dom_name
-      form_tag_id(bindings[:form].object_name, longitude_field) + '_longitude'
+      form_tag_id(bindings[:form].object_name, @name) + '_longitude'
     end
 
     def address_dom_name
