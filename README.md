@@ -43,6 +43,7 @@ end
 - `address_field` - the name of the address field. Defaults to "address"
 - `city_field` - the name of the city field. Defaults to "city"
 - `state_field` - the name of the state field. Defaults to "state"
+- `country_field` - the name of the country field. Defaults to "country"
 - `google_api_key` - if you use a Google Maps API Key, it can be specified here.
 - `default_latitude` - the latitude to center the map shown on if the latitude field is blank. Defaults to 40.711417, the latitude of New Jersey City, NJ, USA
 - `default_longitude` - the longitude used if the longitude field is blank. Defaults to -74.0647, the longitude of New Jersey City, NJ, USA.
