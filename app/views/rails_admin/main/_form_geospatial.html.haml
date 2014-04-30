@@ -37,7 +37,7 @@
 
       function processAddress() {
         // geocode based on this location
-        var address = $("##{field.address_dom_name}").val(),
+        var address = $("##{field.address_dom_name}").val() || "",
             city = $("##{field.city_dom_name} option[value='" + $("##{field.city_dom_name}").val() + "']").text()
                 || $("##{field.city_dom_name}").val()
                 || false,
@@ -50,15 +50,12 @@
             address_string = "";
 
 
-        if (address.length === 0)
-          return;
-
         address_string = address;
         if (city) address_string += ", " + city;
         if (state) address_string += ", " + state;
         if (country) address_string += ", " + country;
 
-        if ((address === undefined) || (address.length === 0))
+        if (address_string.length === 0)
           return;
 
         geocoder.geocode({ 'address': address_string }, function(results, status){
