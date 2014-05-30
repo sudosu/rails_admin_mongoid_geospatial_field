@@ -21,8 +21,16 @@ In your model location field must be an Array:
 ```ruby
 class Person
   include Mongoid::Document
+  
   field :location, :type => Array  # [lat,lng]
-  index( { location: '2d' }, { min: -180, max: 180 })
+  
+  index( { location: '2d' }, { min: -180, max: 180 }) # create an special index 
+  
+  before_save :fix_location, if: :location_changed? # lat and lng must be in float format
+  
+  def fix_location
+    self.location = self.location.map(&:to_f)
+  end
 end
 ```
 
@@ -36,6 +44,12 @@ RailsAdmin.config do |config|
     end
   end
 end
+```
+
+Create indexes in command prompt:
+
+```ruby
+rake db:mongoid:create_indexes
 ```
 
 ## Configuration
